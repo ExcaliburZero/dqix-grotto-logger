@@ -49,6 +49,12 @@ public class Controller {
     }
 
     @FXML
+    private void clearGrottoes(ActionEvent event) {
+        ObservableList<Grotto> data = tableView.getItems();
+        data.setAll(new ArrayList<Grotto>());
+    }
+
+    @FXML
     private void deleteGrotto(ActionEvent event) {
         ObservableList<Grotto> data = tableView.getItems();
         Grotto selectedGrotto = tableView.getSelectionModel().getSelectedItem();

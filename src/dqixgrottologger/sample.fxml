@@ -54,7 +54,8 @@
 
             <GridPane alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="6" vgap="10" hgap="10">
                 <Button text="Add" onAction="#addGrotto" GridPane.columnIndex="0"></Button>
-                <Button text="Delete" onAction="#deleteGrotto" GridPane.columnIndex="1"></Button>
+                <Button text="Clear" onAction="#clearGrottoes" GridPane.columnIndex="1"></Button>
+                <Button text="Delete" onAction="#deleteGrotto" GridPane.columnIndex="2"></Button>
             </GridPane>
         </GridPane>
     </HBox>
