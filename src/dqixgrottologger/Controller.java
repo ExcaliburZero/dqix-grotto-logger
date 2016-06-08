@@ -49,6 +49,13 @@ public class Controller {
     }
 
     @FXML
+    private void deleteGrotto(ActionEvent event) {
+        ObservableList<Grotto> data = tableView.getItems();
+        Grotto selectedGrotto = tableView.getSelectionModel().getSelectedItem();
+        data.remove(selectedGrotto);
+    }
+
+    @FXML
     private void importCSV(ActionEvent event) {
         ObservableList<Grotto> data = tableView.getItems();
 
