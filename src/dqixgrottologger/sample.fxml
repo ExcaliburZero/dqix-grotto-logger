@@ -9,13 +9,46 @@
 <?import dqixgrottologger.Grotto?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <GridPane fx:controller="dqixgrottologger.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"></Insets>
     </padding>
-    <Label text="Dragon Quest IX Grotto Logger" GridPane.columnIndex="0" GridPane.rowIndex="0"></Label>
-    <TableView fx:id="tableView" GridPane.columnIndex="0" GridPane.rowIndex="1">
+    <Label text="Dragon Quest IX Grotto Logger" style="-fx-font: NORMAL 20 Tahoma;" GridPane.columnIndex="0" GridPane.rowIndex="0"></Label>
+    <HBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <GridPane alignment="center" hgap="10" vgap="10">
+            <Label text="Prefix:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="0" GridPane.rowIndex="0"></Label>
+            <TextField fx:id="prefixField" promptText="Prefix" prefWidth="120" GridPane.columnIndex="1" GridPane.rowIndex="0"></TextField>
+            <Label text="Environment:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
+            <TextField fx:id="environmentField" promptText="Environment" prefWidth="120" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
+            <Label text="Suffix:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="0" GridPane.rowIndex="2"></Label>
+            <TextField fx:id="suffixField" promptText="Suffix" prefWidth="120" GridPane.columnIndex="1" GridPane.rowIndex="2"></TextField>
+
+            <Label text="Level:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="2" GridPane.rowIndex="0"></Label>
+            <TextField fx:id="levelField" promptText="Level" prefWidth="120" GridPane.columnIndex="3" GridPane.rowIndex="0"></TextField>
+            <Label text="Terrain:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="2" GridPane.rowIndex="1"></Label>
+            <TextField fx:id="terrainField" promptText="Terrain" prefWidth="120" GridPane.columnIndex="3" GridPane.rowIndex="1"></TextField>
+            <Label text="Boss:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="2" GridPane.rowIndex="2"></Label>
+            <TextField fx:id="bossField" promptText="Boss" prefWidth="120" GridPane.columnIndex="3" GridPane.rowIndex="2"></TextField>
+
+            <Label text="Area:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="4" GridPane.rowIndex="0"></Label>
+            <TextField fx:id="areaField" promptText="Area" prefWidth="120" GridPane.columnIndex="5" GridPane.rowIndex="0"></TextField>
+            <Label text="Floors:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="4" GridPane.rowIndex="1"></Label>
+            <TextField fx:id="floorsField" promptText="Floors" prefWidth="120" GridPane.columnIndex="5" GridPane.rowIndex="1"></TextField>
+            <Label text="Monster Level:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="4" GridPane.rowIndex="2"></Label>
+            <TextField fx:id="monsterLevelField" promptText="Monster Level" prefWidth="120" GridPane.columnIndex="5" GridPane.rowIndex="2"></TextField>
+
+            <Label text="Notes" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="0" GridPane.rowIndex="3"></Label>
+            <TextArea fx:id="notesArea" promptText="Notes" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="6"></TextArea>
+
+            <HBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="6">
+                <Button text="Add" onAction="#addGrotto"></Button>
+            </HBox>
+        </GridPane>
+    </HBox>
+    <TableView fx:id="tableView" GridPane.columnIndex="0" GridPane.rowIndex="2">
         <columns>
             <TableColumn text="Prefix">
                 <cellValueFactory><PropertyValueFactory property="prefix" />
@@ -63,7 +96,4 @@
             </FXCollections>
         </items>
     </TableView>
-   <HBox GridPane.columnIndex="0" GridPane.rowIndex="2">
-       <Button text="Add" onAction="#addGrotto"></Button>
-   </HBox>
 </GridPane>

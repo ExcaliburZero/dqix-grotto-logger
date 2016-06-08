@@ -10,15 +10,15 @@ public class Grotto {
     private String prefix;
     private String environment;
     private String suffix;
-    private int level;
+    private String level;
     private String terrain;
     private String boss;
     private String area;
-    private int floors;
+    private String floors;
     private String monsterLevel;
     private String notes;
 
-    public Grotto(String prefix, String environment, String suffix, int level, String terrain, String boss, String area, int floors, String monsterLevel, String notes) {
+    public Grotto(String prefix, String environment, String suffix, String level, String terrain, String boss, String area, String floors, String monsterLevel, String notes) {
         this.prefix = prefix;
         this.environment = environment;
         this.suffix = suffix;
@@ -55,11 +55,11 @@ public class Grotto {
         this.suffix = suffix;
     }
 
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
@@ -87,11 +87,11 @@ public class Grotto {
         this.area = area;
     }
 
-    public int getFloors() {
+    public String getFloors() {
         return floors;
     }
 
-    public void setFloors(int floors) {
+    public void setFloors(String floors) {
         this.floors = floors;
     }
 
