@@ -31,6 +31,27 @@ public class Grotto {
         this.notes = notes;
     }
 
+    /**
+     * Returns a CSV line representation of the Grotto.
+     *
+     * @return A CSV line representation of the Grotto.
+     */
+    public String toCSV() {
+        String csvLine = "";
+        csvLine += "\"" + this.prefix + "\", ";
+        csvLine += "\"" + this.environment + "\", ";
+        csvLine += "\"" + this.suffix + "\", ";
+        csvLine += "\"" + this.level + "\", ";
+        csvLine += "\"" + this.terrain + "\", ";
+        csvLine += "\"" + this.boss + "\", ";
+        csvLine += "\"" + this.area + "\", ";
+        csvLine += "\"" + this.floors + "\", ";
+        csvLine += "\"" + this.monsterLevel + "\", ";
+        csvLine += "\"" + this.notes + "\"";
+
+        return csvLine;
+    }
+
     public String getPrefix() {
         return prefix;
     }
