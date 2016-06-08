@@ -49,6 +49,34 @@ public class Controller {
     }
 
     @FXML
+    private void importCSV(ActionEvent event) {
+        ObservableList<Grotto> data = tableView.getItems();
+
+        // Get the file location to import grottoes from from the user
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Import grottoes list");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("CSV", "*.csv")
+        );
+        File file = fileChooser.showOpenDialog(primaryStage);
+        Path csvFile = Paths.get(file.getPath());
+
+        // Try to add the grottoes defined in the file to the table
+        try {
+            String csvContents = new String(Files.readAllBytes(csvFile));
+            ArrayList<Grotto> grottoes = Grotto.fromCSV(csvContents);
+            for (Grotto grotto : grottoes) {
+                data.add(grotto);
+            }
+        } catch (IOException ex) {
+            System.err.println("Unable to open csv file: " + file.getPath());
+        } catch (NullPointerException | IndexOutOfBoundsException ex) {
+            System.err.println("Error parsing grotto csv file: " + file.getPath());
+            System.err.println(ex);
+        }
+    }
+
+    @FXML
     private void exportCSV(ActionEvent event) {
         ObservableList<Grotto> data = tableView.getItems();
 

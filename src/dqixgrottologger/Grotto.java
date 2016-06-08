@@ -1,5 +1,9 @@
 package dqixgrottologger;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Function;
+
 /**
  * The <code>Grotto</code> class is used to represent a Grotto and the
  * information associated with it.
@@ -50,6 +54,66 @@ public class Grotto {
         csvLine += "\"" + this.notes + "\"";
 
         return csvLine;
+    }
+
+    /**
+     * Converts a csv representation of a list of grottoes into an ArrayList of
+     * Grotto objects.
+     *
+     * @param csvContents The csv representation of the list of grottoes.
+     * @return A list of the grottoes.
+     */
+    public static ArrayList<Grotto> fromCSV(String csvContents) {
+        // Remove the header line if it is included
+        int firstLineIndex = csvContents.indexOf("\n");
+        String firstLine = csvContents.substring(0, firstLineIndex);
+        String headerLine = "Prefix, Environment, Suffix, Level, Terrain, Boss, Area, Floors, Monster Level, Notes";
+        String grottoesCsv;
+        if (firstLine.equals(headerLine)) {
+            grottoesCsv = csvContents.substring(firstLineIndex + 1);
+        } else {
+            grottoesCsv = csvContents;
+        }
+
+        // Remove the quotes so that the file is easier to parse
+        grottoesCsv = grottoesCsv.replace("\"", "");
+
+        // Break down the csv contents into grotto entries
+        ArrayList<String> lines = new ArrayList<>(Arrays.asList(grottoesCsv.split("\n")));
+        ArrayList<String []> entries = new ArrayList<>();
+        for (String line : lines) {
+            entries.add(line.split(","));
+        }
+
+        // Convert the entries into a list of grottoes
+        ArrayList<Grotto> grottos = new ArrayList<>();
+        for (String [] entry : entries) {
+            grottos.add(Grotto.cvsEntryToGrotto(entry));
+        }
+
+        return grottos;
+    }
+
+    /**
+     * Converts an entry of a csv file into a Grotto.
+     *
+     * @param csvEntry The csv entry representing the grotto.
+     * @return The generated Grotto object.
+     */
+    public static Grotto cvsEntryToGrotto(String [] csvEntry) {
+        String prefix = csvEntry[0];
+        String environment = csvEntry[1];
+        String suffix = csvEntry[2];
+        String level = csvEntry[3];
+        String terrain = csvEntry[4];
+        String boss = csvEntry[5];
+        String area = csvEntry[6];
+        String floors = csvEntry[7];
+        String monsterLevel = csvEntry[8];
+        String notes = csvEntry[9];
+
+        Grotto grotto = new Grotto(prefix, environment, suffix, level, terrain, boss, area, floors, monsterLevel, notes);
+        return grotto;
     }
 
     public String getPrefix() {

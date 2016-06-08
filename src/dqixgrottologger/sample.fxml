@@ -21,7 +21,7 @@
     </padding>
     <MenuBar GridPane.columnIndex="0" GridPane.rowIndex="0">
         <Menu text="File">
-            <MenuItem text="Import"></MenuItem>
+            <MenuItem text="Import" onAction="#importCSV"></MenuItem>
             <MenuItem text="Export" onAction="#exportCSV"></MenuItem>
         </Menu>
     </MenuBar>
