@@ -2,7 +2,9 @@ package dqixgrottologger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
+import java.util.jar.Pack200;
 
 /**
  * The <code>Grotto</code> class is used to represent a Grotto and the
@@ -116,47 +118,47 @@ public class Grotto {
         return grotto;
     }
 
-    public static String [] getValidPrefixes() {
-        return new String[]{
+    public static List<String> getValidPrefixes() {
+        return Arrays.asList(new String[]{
                 "Basalt", "Bronze", "Clay", "Copper", "Diamond",
                 "Emerald", "Gold", "Granite", "Graphite", "Iron", "Platinum",
                 "Rock", "Ruby", "Sapphire", "Silver", "Steel"
-        };
+        });
     }
 
-    public static String [] getValidEnvironments() {
-        return new String[]{
+    public static List<String> getValidEnvironments() {
+        return Arrays.asList(new String[]{
                 "Abyss", "Cave", "Chasm", "Crater", "Crevasse", "Crypt",
                 "Dungeon", "Glacier", "Icepit", "Lair", "Lake", "Marshe",
                 "Maze", "Mine", "Moor", "Nest", "Path", "Ruins", "Snowhall",
                 "Tundra", "Tunnel", "Void", "Waterway", "World"
-        };
+        });
     }
 
-    public static String [] getValidSuffixes() {
-        return new String[]{
+    public static List<String> getValidSuffixes() {
+        return Arrays.asList(new String[]{
                 "Bane", "Bliss", "Death", "Dolour", "Doom", "Doubt",
                 "Dread", "Evil", "Fear", "Glee", "Gloom", "Hurt", "Joy",
                 "Regret", "Ruin", "Woe"
-        };
+        });
     }
 
-    public static String [] getValidTerrains() {
-        return new String[]{
+    public static List<String> getValidTerrains() {
+        return Arrays.asList(new String[]{
                 "Cave", "Fire", "Ice", "Ruins", "Water", "Unknown"
-        };
+        });
     }
 
-    public static String [] getValidBosses() {
-        return new String[]{
+    public static List<String> getValidBosses() {
+        return Arrays.asList(new String[]{
                 "Atlas", "Elusid", "Eqinox", "Excalipurr", "Fowleye",
                 "Greygnarl", "Hammibal", "Nemean", "Shogum", "Sir Sanguinus",
                 "Trauminator", "Tyrannosaurus Wrecks", "Unknown"
-        };
+        });
     }
 
-    public static String [] getValidAreas() {
-        return new String[]{
+    public static List<String> getValidAreas() {
+        return Arrays.asList(new String[]{
                 "Angel Falls", "The Bad Cave", "Bloomingdale",
                 "Cringle Coast", "Doomingale Forest", "Dourbridge",
                 "Eastern Coffinwell", "Eastern Stornway", "Eastern Wormwood",
@@ -168,7 +170,112 @@ public class Grotto {
                 "Western Stornway", "Western Wormwood", "Wormwood Canyon",
                 "Wyrmneck", "Wyrmsmaw", "Wyrmtail", "Wyrmwing", "Zere",
                 "Unknown"
-        };
+        });
+    }
+
+    public static boolean validatePrefix(String prefix) {
+        return getValidPrefixes().contains(prefix);
+    }
+
+    public static boolean validateEnvironment(String environment) {
+        return getValidEnvironments().contains(environment);
+    }
+
+    public static boolean validateSuffix(String suffix) {
+        return getValidSuffixes().contains(suffix);
+    }
+
+    public static boolean validateLevel(String level) {
+        // Level must be an integer from 1 to 99
+        try {
+            int value = Integer.parseInt(level);
+            return value > 0 && value < 100;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
+
+    public static boolean validateTerrain(String terrain) {
+        return getValidTerrains().contains(terrain);
+    }
+
+    public static boolean validateBoss(String boss) {
+        return getValidBosses().contains(boss);
+    }
+
+    public static boolean validateArea(String area) {
+        return getValidAreas().contains(area);
+    }
+
+    public static boolean validateFloors(String floors) {
+        // Floor must be an integer from 1 to 16
+        try {
+            int value = Integer.parseInt(floors);
+            return value > 0 && value < 17;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
+
+    public static boolean validateMonsterLevel(String monsterLevel) {
+        // Monster level must be an integer from 1 to 9
+        try {
+            int value = Integer.parseInt(monsterLevel);
+            return value > 0 && value < 10;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
+
+    public static boolean validateNotes(String notes) {
+        return !(notes.contains(",") || notes.contains("\n"));
+    }
+
+    public ArrayList<String> getInvalidFields() {
+        // Validate all of the fields and return a list of all of the invalid fields
+        ArrayList<String> invalidFields = new ArrayList<>();
+
+        if (!validatePrefix(this.prefix)) {
+            invalidFields.add("Prefix");
+        }
+
+        if (!validateEnvironment(this.environment)) {
+            invalidFields.add("Environment");
+        }
+
+        if (!validateSuffix(this.suffix)) {
+            invalidFields.add("Suffix");
+        }
+
+        if (!validateLevel(this.level)) {
+            invalidFields.add("Level");
+        }
+
+        if (!validateTerrain(this.terrain)) {
+            invalidFields.add("Terrain");
+        }
+
+        if (!validateBoss(this.boss)) {
+            invalidFields.add("Boss");
+        }
+
+        if (!validateArea(this.area)) {
+            invalidFields.add("Area");
+        }
+
+        if (!validateFloors(this.floors)) {
+            invalidFields.add("Floors");
+        }
+
+        if (!validateMonsterLevel(this.monsterLevel)) {
+            invalidFields.add("Monster Level");
+        }
+
+        if (!validateNotes(this.notes)) {
+            invalidFields.add("Notes");
+        }
+
+        return invalidFields;
     }
 
     public String getPrefix() {

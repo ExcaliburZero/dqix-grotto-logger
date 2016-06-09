@@ -88,7 +88,14 @@ public class Controller implements Initializable {
                 this.monsterLevelField.getText(),
                 this.notesArea.getText()
         );
-        data.add(newGrotto);
+
+        ArrayList<String> invalidFields = newGrotto.getInvalidFields();
+
+        if (invalidFields.isEmpty()) {
+            data.add(newGrotto);
+        } else {
+            System.err.println("Invalid grotto field(s): " + invalidFields);
+        }
     }
 
     @FXML
