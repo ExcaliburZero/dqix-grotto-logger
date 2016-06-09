@@ -14,6 +14,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.cell.ComboBoxListCell?>
 <GridPane fx:controller="dqixgrottologger.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <padding>
@@ -29,21 +31,21 @@
     <HBox GridPane.columnIndex="0" GridPane.rowIndex="2">
         <GridPane alignment="center" hgap="10" vgap="10">
             <Label text="Prefix:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="0" GridPane.rowIndex="0"></Label>
-            <TextField fx:id="prefixField" promptText="Prefix" prefWidth="120" GridPane.columnIndex="1" GridPane.rowIndex="0"></TextField>
+            <ComboBox fx:id="prefixBox" GridPane.columnIndex="1" GridPane.rowIndex="0"></ComboBox>
             <Label text="Environment:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
-            <TextField fx:id="environmentField" promptText="Environment" prefWidth="120" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
+            <ComboBox fx:id="environmentBox" GridPane.columnIndex="1" GridPane.rowIndex="1"></ComboBox>
             <Label text="Suffix:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="0" GridPane.rowIndex="2"></Label>
-            <TextField fx:id="suffixField" promptText="Suffix" prefWidth="120" GridPane.columnIndex="1" GridPane.rowIndex="2"></TextField>
+            <ComboBox fx:id="suffixBox" GridPane.columnIndex="1" GridPane.rowIndex="2"></ComboBox>
 
             <Label text="Level:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="2" GridPane.rowIndex="0"></Label>
             <TextField fx:id="levelField" promptText="Level" prefWidth="120" GridPane.columnIndex="3" GridPane.rowIndex="0"></TextField>
             <Label text="Terrain:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="2" GridPane.rowIndex="1"></Label>
-            <TextField fx:id="terrainField" promptText="Terrain" prefWidth="120" GridPane.columnIndex="3" GridPane.rowIndex="1"></TextField>
+            <ComboBox fx:id="terrainBox" GridPane.columnIndex="3" GridPane.rowIndex="1"></ComboBox>
             <Label text="Boss:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="2" GridPane.rowIndex="2"></Label>
-            <TextField fx:id="bossField" promptText="Boss" prefWidth="120" GridPane.columnIndex="3" GridPane.rowIndex="2"></TextField>
+            <ComboBox fx:id="bossBox" GridPane.columnIndex="3" GridPane.rowIndex="2"></ComboBox>
 
             <Label text="Area:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="4" GridPane.rowIndex="0"></Label>
-            <TextField fx:id="areaField" promptText="Area" prefWidth="120" GridPane.columnIndex="5" GridPane.rowIndex="0"></TextField>
+            <ComboBox fx:id="areaBox" GridPane.columnIndex="5" GridPane.rowIndex="0"></ComboBox>
             <Label text="Floors:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="4" GridPane.rowIndex="1"></Label>
             <TextField fx:id="floorsField" promptText="Floors" prefWidth="120" GridPane.columnIndex="5" GridPane.rowIndex="1"></TextField>
             <Label text="Monster Level:" style="-fx-font: NORMAL 16 Tahoma;" GridPane.columnIndex="4" GridPane.rowIndex="2"></Label>

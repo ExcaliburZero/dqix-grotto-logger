@@ -3,6 +3,8 @@ package dqixgrottologger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -11,41 +13,107 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
     @FXML private TableView<Grotto> tableView;
-    @FXML private TextField prefixField;
-    @FXML private TextField environmentField;
-    @FXML private TextField suffixField;
+    @FXML private ComboBox prefixBox;
+    @FXML private ComboBox environmentBox;
+    @FXML private ComboBox suffixBox;
     @FXML private TextField levelField;
-    @FXML private TextField terrainField;
-    @FXML private TextField bossField;
-    @FXML private TextField areaField;
+    @FXML private ComboBox terrainBox;
+    @FXML private ComboBox bossBox;
+    @FXML private ComboBox areaBox;
     @FXML private TextField floorsField;
     @FXML private TextField monsterLevelField;
     @FXML private TextArea notesArea;
     @FXML private Stage primaryStage;
 
+    @Override
+    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+        /*
+         * Setup the values in the ComboBoxes and set their initial values.
+         */
+
+        // Prefix
+        prefixBox.getItems().setAll(
+                "Any", "Basalt", "Bronze", "Clay", "Copper", "Diamond",
+                "Emerald", "Gold", "Granite", "Graphite", "Iron", "Platinum",
+                "Rock", "Ruby", "Sapphire", "Silver", "Steel"
+        );
+        prefixBox.setValue("Any");
+
+        // Environment
+        environmentBox.getItems().setAll(
+                "Any", "Abyss", "Cave", "Chasm", "Crater", "Crevasse", "Crypt",
+                "Dungeon", "Glacier", "Icepit", "Lair", "Lake", "Marshe",
+                "Maze", "Mine", "Moor", "Nest", "Path", "Ruins", "Snowhall",
+                "Tundra", "Tunnel", "Void", "Waterway", "World"
+        );
+        environmentBox.setValue("Any");
+
+        // Suffix
+        suffixBox.getItems().setAll(
+                "Any", "Bane", "Bliss", "Death", "Dolour", "Doom", "Doubt",
+                "Dread", "Evil", "Fear", "Glee", "Gloom", "Hurt", "Joy",
+                "Regret", "Ruin", "Woe"
+        );
+        suffixBox.setValue("Any");
+
+        // Terrain
+        terrainBox.getItems().setAll(
+                "Any", "Cave", "Fire", "Ice", "Ruins", "Water", "Unknown"
+        );
+        terrainBox.setValue("Any");
+
+        // Boss
+        bossBox.getItems().setAll(
+                "Any", "Atlas", "Elusid", "Eqinox", "Excalipurr", "Fowleye",
+                "Greygnarl", "Hammibal", "Nemean", "Shogum", "Sir Sanguinus",
+                "Trauminator", "Tyrannosaurus Wrecks", "Unknown"
+        );
+        bossBox.setValue("Any");
+
+        // Area
+        areaBox.getItems().setAll(
+                "Any", "Angel Falls", "The Bad Cave", "Bloomingdale",
+                "Cringle Coast", "Doomingale Forest", "Dourbridge",
+                "Eastern Coffinwell", "Eastern Stornway", "Eastern Wormwood",
+                "The Gittish Empire", "Gleeba", "Hermany",
+                "The Iluugazar Plains", "Khaalag Coast", "The Lonely Coast",
+                "The Lonely Plains", "Mt. Ulbaruun", "Mt. Ulzuun", "Newid",
+                "Ondor Cliffs", "Pluvi Isle", "The Slurry Coast", "Snowberia",
+                "Snowberian Coast", "Urdus Marshland", "Western Coffinwell",
+                "Western Stornway", "Western Wormwood", "Wormwood Canyon",
+                "Wyrmneck", "Wyrmsmaw", "Wyrmtail", "Wyrmwing", "Zere",
+                "Unknown"
+        );
+        areaBox.setValue("Any");
+    }
+
     @FXML
     private void addGrotto(ActionEvent event) {
         ObservableList<Grotto> data = tableView.getItems();
-        data.add(new Grotto(
-                this.prefixField.getText(),
-                this.environmentField.getText(),
-                this.suffixField.getText(),
+
+        Grotto newGrotto = new Grotto(
+                (String) this.prefixBox.getValue(),
+                (String) this.environmentBox.getValue(),
+                (String) this.suffixBox.getValue(),
                 this.levelField.getText(),
-                this.terrainField.getText(),
-                this.bossField.getText(),
-                this.areaField.getText(),
+                (String) this.terrainBox.getValue(),
+                (String) this.bossBox.getValue(),
+                (String) this.areaBox.getValue(),
                 this.floorsField.getText(),
                 this.monsterLevelField.getText(),
                 this.notesArea.getText()
-        ));
+        );
+        data.add(newGrotto);
     }
 
     @FXML
