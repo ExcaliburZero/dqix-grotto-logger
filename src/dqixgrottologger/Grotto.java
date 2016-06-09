@@ -116,6 +116,61 @@ public class Grotto {
         return grotto;
     }
 
+    public static String [] getValidPrefixes() {
+        return new String[]{
+                "Basalt", "Bronze", "Clay", "Copper", "Diamond",
+                "Emerald", "Gold", "Granite", "Graphite", "Iron", "Platinum",
+                "Rock", "Ruby", "Sapphire", "Silver", "Steel"
+        };
+    }
+
+    public static String [] getValidEnvironments() {
+        return new String[]{
+                "Abyss", "Cave", "Chasm", "Crater", "Crevasse", "Crypt",
+                "Dungeon", "Glacier", "Icepit", "Lair", "Lake", "Marshe",
+                "Maze", "Mine", "Moor", "Nest", "Path", "Ruins", "Snowhall",
+                "Tundra", "Tunnel", "Void", "Waterway", "World"
+        };
+    }
+
+    public static String [] getValidSuffixes() {
+        return new String[]{
+                "Bane", "Bliss", "Death", "Dolour", "Doom", "Doubt",
+                "Dread", "Evil", "Fear", "Glee", "Gloom", "Hurt", "Joy",
+                "Regret", "Ruin", "Woe"
+        };
+    }
+
+    public static String [] getValidTerrains() {
+        return new String[]{
+                "Cave", "Fire", "Ice", "Ruins", "Water", "Unknown"
+        };
+    }
+
+    public static String [] getValidBosses() {
+        return new String[]{
+                "Atlas", "Elusid", "Eqinox", "Excalipurr", "Fowleye",
+                "Greygnarl", "Hammibal", "Nemean", "Shogum", "Sir Sanguinus",
+                "Trauminator", "Tyrannosaurus Wrecks", "Unknown"
+        };
+    }
+
+    public static String [] getValidAreas() {
+        return new String[]{
+                "Angel Falls", "The Bad Cave", "Bloomingdale",
+                "Cringle Coast", "Doomingale Forest", "Dourbridge",
+                "Eastern Coffinwell", "Eastern Stornway", "Eastern Wormwood",
+                "The Gittish Empire", "Gleeba", "Hermany",
+                "The Iluugazar Plains", "Khaalag Coast", "The Lonely Coast",
+                "The Lonely Plains", "Mt. Ulbaruun", "Mt. Ulzuun", "Newid",
+                "Ondor Cliffs", "Pluvi Isle", "The Slurry Coast", "Snowberia",
+                "Snowberian Coast", "Urdus Marshland", "Western Coffinwell",
+                "Western Stornway", "Western Wormwood", "Wormwood Canyon",
+                "Wyrmneck", "Wyrmsmaw", "Wyrmtail", "Wyrmwing", "Zere",
+                "Unknown"
+        };
+    }
+
     public String getPrefix() {
         return prefix;
     }
